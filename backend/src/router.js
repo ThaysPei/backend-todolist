@@ -4,8 +4,7 @@ const express = require('express');
 const router = express.Router()
 
 
-//requisiçoes
-router.get('/', (req,res) => res.status(200).send("o router está funcionando"));
+//router.get('/tasks', (req,res) => res.status(200).send("o router está funcionando"));
 
 
 
