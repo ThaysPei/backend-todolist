@@ -1,11 +1,10 @@
-const { response } = require("express")
+const tasksModel = require("../models/tasksModel");
 
-
-const getAll = () =>  {
-return response.status(200).json({message: 'controller esta tudo certo'})
-
-}
+const getAll = async (request, response) => {
+  const tasks = await tasksModel.getAll();
+  return response.status(200).json(tasks);
+};
 
 module.exports = {
-    getAll
-}
+  getAll,
+};
