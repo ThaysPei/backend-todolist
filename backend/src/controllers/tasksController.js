@@ -6,8 +6,8 @@ const getAll = async (request, response) => {
 };
 
 const createTasks = async (request, response) => {
-  //const createdTask = await tasksModel.createTask();
-  return response.status(201).json(request.body);
+  const createdTask = await tasksModel.createTask(request.body);
+  return response.status(201).json();
 };
 
 module.exports = {
