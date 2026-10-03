@@ -1,11 +1,11 @@
 const validateBody = (request, response, next) => {
-const { body } = request;
+const { title } = request.body ?? {};
 
-if(body.title === undefined){
+if(title === undefined){
     return response.status(400).json({message: 'the field "title" is required'})
 } // se não for enviado titulo
 
-if(body.title === ''){
+if(title === ''){
     return response.status(400).json({message: 'title cannot be empty'})
 } // se o campo do titulo está vazio
 
