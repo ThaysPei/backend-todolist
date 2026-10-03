@@ -16,7 +16,7 @@ const createTasks = async (task) => {
     "pendente",
     dateUTC,
   ]);
-  return {insertId: createdTasks.insertId};
+  return {id: createdTasks.insertId};
 };
 
 module.exports = {
