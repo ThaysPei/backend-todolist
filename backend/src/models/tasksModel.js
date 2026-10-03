@@ -5,22 +5,22 @@ const getAll = async () => {
   return tasks;
 };
 
-const createTasks = async (task) => {
+const createTask = async (task) => {
   const { title } = task;
   const dateUTC = new Date().toISOString().slice(0, 19).replace("T", " ");
 
   const query = "INSERT INTO tasks(title, status, created_at) VALUES (?, ?, ?)";
 
-  const [createdTasks] = await connection.execute(query, [
+  const [createdTask] = await connection.execute(query, [
     title,
     "pendente",
     dateUTC,
   ]);
-  return {id: createdTasks.insertId};
+  return {id: createdTask.insertId};
 };
 
 module.exports = {
   getAll,
-  createTasks,
+  createTask,
 };
 // objeto que recebe funcao de busca
