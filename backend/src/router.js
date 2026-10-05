@@ -1,5 +1,4 @@
 const express = require('express');
-
 const { validateBody } = require('./middlewares/tasksMiddlewares');
 const tasksController = require('./controllers/tasksController');
 
