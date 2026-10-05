@@ -1,4 +1,5 @@
 const connection = require("./connection"); 
+const DEFAULT_TASK_STATUS = "pendente";
 
 // Converte uma Date para o formato DATETIME do MySQL ("YYYY-MM-DD HH:MM:SS"), em UTC
 const toMySqlDatetime = (date = new Date()) =>
@@ -16,7 +17,7 @@ const createTask = async (task) => {
 
   const [createdTask] = await connection.execute(query, [
     title,
-    "pendente",
+    DEFAULT_TASK_STATUS,
     toMySqlDatetime(),
   ]);
   return { id: createdTask.insertId };

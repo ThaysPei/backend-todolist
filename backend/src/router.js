@@ -6,7 +6,7 @@ const router = express.Router()
 const tasksMiddlewares = require('./middlewares/tasksMiddlewares')
 
 router.get('/tasks', tasksController.getAll);
-router.post('/tasks',tasksMiddlewares.validateBody, tasksController.createTasks);
+router.post('/tasks',tasksMiddlewares.validateBody, tasksController.createTask);
 
 
 
