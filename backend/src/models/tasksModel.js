@@ -1,20 +1,29 @@
-const connection = require("./connection"); // conexão com banco de dados
+const connection = require("./connection"); 
+const DEFAULT_TASK_STATUS = "pendente";
+
+// Converte uma Date para o formato DATETIME do MySQL ("YYYY-MM-DD HH:MM:SS"), em UTC
+const toMySqlDatetime = (date = new Date()) =>
+  date.toISOString().slice(0, 19).replace("T", " ");
 
 const getAll = async () => {
   const [tasks] = await connection.execute("SELECT * FROM tasks"); // função de busca GET
   return tasks;
 };
 
-const createTasks = async (task) => {
+const createTask = async (task) => {
   const { title } = task;
-  const dateUTC = new Date(Date.now()).toUTCString();
+
   const query = "INSERT INTO tasks(title, status, created_at) VALUES (?, ?, ?)";
-  const [createdTasks] = await connection.execute(query, [title,"pendente",dateUTC]);
-  return createdTasks;
+
+  const [createdTask] = await connection.execute(query, [
+    title,
+    DEFAULT_TASK_STATUS,
+    toMySqlDatetime(),
+  ]);
+  return { id: createdTask.insertId };
 };
 
 module.exports = {
   getAll,
-  createTasks,
+  createTask,
 };
-// objeto que recebe funcao de busca
