@@ -4,7 +4,10 @@ const tasksController = require('./controllers/tasksController');
 
 const router = express.Router();
 
-router.get('/tasks', tasksController.getAll);
+router.get(
+  '/tasks',
+  tasksController.getAll
+);
 
 router.post(
   '/tasks',
@@ -13,4 +16,3 @@ router.post(
 );
 
 module.exports = router;
-
