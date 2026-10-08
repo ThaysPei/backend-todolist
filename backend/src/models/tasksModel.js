@@ -1,4 +1,4 @@
-const connection = require("./connection"); 
+const connection = require("./connection");
 const DEFAULT_TASK_STATUS = "pendente";
 
 // Converte uma Date para o formato DATETIME do MySQL ("YYYY-MM-DD HH:MM:SS"), em UTC
@@ -23,7 +23,16 @@ const createTask = async (task) => {
   return { id: createdTask.insertId };
 };
 
+const deleteTask = async (id) => {
+  const removedTask = await connection.execute(
+    "DELETE FROM tasks WHERE id= ?",
+    [id],
+  );
+  return removedTask;
+};
+
 module.exports = {
   getAll,
   createTask,
+  deleteTask,
 };
