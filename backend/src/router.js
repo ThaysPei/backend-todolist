@@ -1,5 +1,5 @@
 const express = require('express');
-const { validateBody } = require('./middlewares/tasksMiddlewares');
+const { validateFieldTitle } = require('./middlewares/tasksMiddlewares');
 const tasksController = require('./controllers/tasksController');
 
 const router = express.Router();
@@ -11,8 +11,15 @@ router.get(
 
 router.post(
   '/tasks',
-  validateBody,
+  validateFieldTitle,
   tasksController.createTask
 );
+
+router.delete(
+  '/tasks/:id',
+  tasksController.deleteTask
+);
+
+
 
 module.exports = router;
