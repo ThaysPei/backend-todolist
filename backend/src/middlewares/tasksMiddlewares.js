@@ -25,8 +25,25 @@ const validateFieldTitle = (request, response, next) => {
     next();
 };
 
+const validateFieldStatus = (request, response, next) => {
+  const { status } = request.body ?? {};
+
+  if (status === undefined) {
+    return response.status(400).json({
+      message: 'the field "status" is required',
+    });
+  }
+
+  if (typeof status !== 'string' || status.trim() === '') {
+    return response.status(400).json({
+      message: 'status must be a non-empty string',
+    });
+  }
+
+  next();
+};
 
 module.exports = {
     validateFieldTitle,
-  
+    validateFieldStatus,
 };

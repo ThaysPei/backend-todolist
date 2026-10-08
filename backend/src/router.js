@@ -1,5 +1,5 @@
 const express = require('express');
-const { validateFieldTitle } = require('./middlewares/tasksMiddlewares');
+const { validateFieldTitle, validateFieldStatus } = require('./middlewares/tasksMiddlewares');
 const tasksController = require('./controllers/tasksController');
 
 const router = express.Router();
@@ -20,6 +20,11 @@ router.delete(
   tasksController.deleteTask
 );
 
-
+router.put(
+  '/tasks/:id',
+  validateFieldTitle,
+  validateFieldStatus,
+  tasksController.updateTask
+);
 
 module.exports = router;
