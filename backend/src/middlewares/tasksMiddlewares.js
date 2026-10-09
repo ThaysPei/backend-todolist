@@ -43,7 +43,22 @@ const validateFieldStatus = (request, response, next) => {
   next();
 };
 
+
+const validateParamId = (request, response, next) => {
+  const { id } = request.params;
+  const numericId = Number(id);
+
+  if (!Number.isInteger(numericId) || numericId <= 0) {
+    return response.status(400).json({
+      message: "id must be a positive integer",
+    });
+  }
+
+  next();
+};
+
 module.exports = {
     validateFieldTitle,
     validateFieldStatus,
+    validateParamId,
 };

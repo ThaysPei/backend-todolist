@@ -1,5 +1,5 @@
 const express = require('express');
-const { validateFieldTitle, validateFieldStatus } = require('./middlewares/tasksMiddlewares');
+const { validateFieldTitle, validateFieldStatus,validateParamId } = require('./middlewares/tasksMiddlewares');
 const tasksController = require('./controllers/tasksController');
 
 const router = express.Router();
@@ -17,14 +17,17 @@ router.post(
 
 router.delete(
   '/tasks/:id',
+  validateParamId,
   tasksController.deleteTask
 );
 
 router.put(
   '/tasks/:id',
+  validateParamId,
   validateFieldTitle,
   validateFieldStatus,
   tasksController.updateTask
 );
+
 
 module.exports = router;
