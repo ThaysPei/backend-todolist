@@ -1,4 +1,4 @@
-const tasksModel = require("../models/tasksModel");
+const tasksModel = require('../models/tasksModel');
 
 const getAll = async (request, response) => {
   const tasks = await tasksModel.getAll();
@@ -10,12 +10,11 @@ const createTask = async (request, response) => {
   return response.status(201).json(createdTask);
 };
 
-const deleteTask = async(request, response) => {
-  const {id} = request.params;
+const deleteTask = async (request, response) => {
+  const { id } = request.params;
 
   await tasksModel.deleteTask(id);
-  return response.status(204).json()
-
+  return response.status(204).end();
 };
 
 const updateTask = async (request, response) => {
@@ -25,14 +24,12 @@ const updateTask = async (request, response) => {
 
   if (result.affectedRows === 0) {
     return response.status(404).json({
-      message: "task not found",
+      message: 'task not found',
     });
   }
 
   return response.status(204).end();
 };
-
-
 
 module.exports = {
   getAll,
