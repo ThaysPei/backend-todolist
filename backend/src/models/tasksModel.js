@@ -2,7 +2,7 @@ const connection = require('./connection');
 
 const DEFAULT_TASK_STATUS = 'pendente';
 
-
+// Converte uma Date para o formato DATETIME do MySQL ("YYYY-MM-DD HH:MM:SS"), em UTC
 const toMySqlDatetime = (date = new Date()) =>
   date.toISOString().slice(0, 19).replace('T', ' ');
 
@@ -25,9 +25,10 @@ const createTask = async (task) => {
 };
 
 const deleteTask = async (id) => {
-  const removedTask = await connection.execute('DELETE FROM tasks WHERE id = ?', [
-    id,
-  ]);
+  const [removedTask] = await connection.execute(
+    'DELETE FROM tasks WHERE id = ?',
+    [id],
+  );
   return removedTask;
 };
 
