@@ -13,7 +13,14 @@ const createTask = async (request, response) => {
 const deleteTask = async (request, response) => {
   const { id } = request.params;
 
-  await tasksModel.deleteTask(id);
+  const result = await tasksModel.deleteTask(id);
+
+  if (result.affectedRows === 0) {
+    return response.status(404).json({
+      message: 'task not found',
+    });
+  }
+
   return response.status(204).end();
 };
 

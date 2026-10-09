@@ -1,10 +1,6 @@
 const DEFAULT_TASK_STATUS = 'pendente';
 
-const TASK_STATUSES = [
-  DEFAULT_TASK_STATUS,
-  'em andamento',
-  'concluída',
-];
+const TASK_STATUSES = [DEFAULT_TASK_STATUS, 'em andamento', 'concluída'];
 
 const validateFieldTitle = (request, response, next) => {
   const { title } = request.body ?? {};
