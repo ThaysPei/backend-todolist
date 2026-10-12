@@ -56,18 +56,21 @@ const validateFieldStatus = (request, response, next) => {
   next();
 };
 
+
+const TASK_ID_PATTERN = /^[1-9]\d*$/;
+
 const validateParamId = (request, response, next) => {
   const { id } = request.params;
-  const numericId = Number(id);
 
-  if (!Number.isInteger(numericId) || numericId <= 0) {
+  if (!TASK_ID_PATTERN.test(id)) {
     return response.status(400).json({
       message: 'id must be a positive integer',
     });
   }
 
-  next();
+  return next();
 };
+
 
 module.exports = {
   validateFieldTitle,
