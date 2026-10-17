@@ -104,16 +104,10 @@ INSERT INTO tasks (title, status) VALUES ('Estudar JavaScript', 'pendente');
 
 ### 4. Configure as variáveis de ambiente
 
-Crie um arquivo `.env` na pasta `backend` (ajuste os nomes conforme o seu `connection.js`):
+cd backend
+cp .env.example .env
+**edite o .env e coloque sua senha em MYSQL_PASSWORD**
 
-```env
-PORT=3333
-MYSQL_HOST=localhost
-MYSQL_PORT=3307
-MYSQL_USER=root
-MYSQL_PASSWORD=sua_senha
-MYSQL_DB=todolist
-```
 
 > Não versione o `.env`. Confirme que ele está no `.gitignore`.
 
