@@ -1,4 +1,4 @@
-const connection = require("./connection"); 
+const connection = require("./connection");
 const DEFAULT_TASK_STATUS = "pendente";
 
 // Converte uma Date para o formato DATETIME do MySQL ("YYYY-MM-DD HH:MM:SS"), em UTC
