@@ -4,7 +4,7 @@ API REST em Node.js para gerenciar tarefas (to-do list), com banco de dados MySQ
 
 ## Sobre o projeto
 
-Este é o backend de uma aplicação de lista de tarefas. Ele expõe uma API que consulta as tarefas salvas no MySQL e as devolve em JSON. O projeto segue uma separação em camadas (rotas, controllers e models), em que cada uma tem uma responsabilidade única.
+Este é o backend de uma aplicação de lista de tarefas. Ele expõe uma API que consulta as tarefas salvas no MySQL e as devolve em JSON. O projeto segue uma separação em camadas (rotas, controllers e models), em que cada uma tem uma responsabilidade única.Datas são sempre UTC; o front-end converte para o fuso local.
 
 ## Tecnologias
 
