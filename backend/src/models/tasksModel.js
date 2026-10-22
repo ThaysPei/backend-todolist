@@ -1,4 +1,4 @@
-const connection = require("./connection");
+const pool = require("../config/database");
 const DEFAULT_TASK_STATUS = "pendente";
 
 // Converte uma Date para o formato DATETIME do MySQL ("YYYY-MM-DD HH:MM:SS"), em UTC
@@ -6,7 +6,7 @@ const toMySqlDatetime = (date = new Date()) =>
   date.toISOString().slice(0, 19).replace("T", " ");
 
 const getAll = async () => {
-  const [tasks] = await connection.execute("SELECT * FROM tasks"); // função de busca GET
+  const [tasks] = await pool.execute("SELECT * FROM tasks"); // função de busca GET
   return tasks;
 };
 
@@ -15,7 +15,7 @@ const createTask = async (task) => {
 
   const query = "INSERT INTO tasks(title, status, created_at) VALUES (?, ?, ?)";
 
-  const [createdTask] = await connection.execute(query, [
+  const [createdTask] = await pool.execute(query, [
     title,
     DEFAULT_TASK_STATUS,
     toMySqlDatetime(),
