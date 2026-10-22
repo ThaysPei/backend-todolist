@@ -9,7 +9,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 ### Corrigido
 
 - O pool do MySQL agora usa `timezone: 'Z'`, então `created_at` é lido e gravado em UTC mesmo quando o Node roda em outro fuso, como o README já afirmava.
-- O pool passa a ter `connectionLimit` (10) e `queueLimit` (100) explícitos, em vez da fila ilimitada padrão.
+- O pool passa a ter `connectionLimit` (10) e `queueLimit` (50) explícitos, em vez da fila ilimitada padrão.
 
 ## [0.2.0] - 2026-10-02
 
