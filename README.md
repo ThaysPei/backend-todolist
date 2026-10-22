@@ -104,7 +104,13 @@ INSERT INTO tasks (title, status) VALUES ('Estudar JavaScript', 'pendente');
 
 ### 4. Configure as variáveis de ambiente
 
-Crie um arquivo `.env` na pasta `backend` (ajuste os nomes conforme o seu `connection.js`):
+Na pasta `backend`, copie o arquivo de exemplo para criar o seu `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Depois abra o `.env` e preencha `MYSQL_PASSWORD` com a senha que você definiu no `docker run` (`MYSQL_ROOT_PASSWORD`). Os demais valores já apontam para o container do passo 2:
 
 ```env
 PORT=3333

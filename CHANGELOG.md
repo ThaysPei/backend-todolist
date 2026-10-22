@@ -6,6 +6,10 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Não lançado]
 
+### Corrigido
+
+- `.env.example` agora inclui `MYSQL_PORT` (3307, igual ao README) e usa o formato `CHAVE=valor`, sem espaços ao redor do `=`.
+
 ## [0.2.0] - 2026-10-02
 
 ### Adicionado
