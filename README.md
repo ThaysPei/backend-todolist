@@ -4,7 +4,7 @@ API REST em Node.js para gerenciar tarefas (to-do list), com banco de dados MySQ
 
 ## Sobre o projeto
 
-Este é o backend de uma aplicação de lista de tarefas. Ele expõe uma API que consulta as tarefas salvas no MySQL e as devolve em JSON. O projeto segue uma separação em camadas (rotas, controllers e models), em que cada uma tem uma responsabilidade única.
+Este é o backend de uma aplicação de lista de tarefas. Ele expõe uma API que consulta as tarefas salvas no MySQL e as devolve em JSON. O projeto segue uma separação em camadas (rotas, controllers e models), em que cada uma tem uma responsabilidade única.Datas são sempre UTC; o front-end converte para o fuso local.
 
 ## Tecnologias
 
@@ -104,16 +104,10 @@ INSERT INTO tasks (title, status) VALUES ('Estudar JavaScript', 'pendente');
 
 ### 4. Configure as variáveis de ambiente
 
-Crie um arquivo `.env` na pasta `backend` (ajuste os nomes conforme o seu `connection.js`):
+cd backend
+cp .env.example .env
+**edite o .env e coloque sua senha em MYSQL_PASSWORD**
 
-```env
-PORT=3333
-MYSQL_HOST=localhost
-MYSQL_PORT=3307
-MYSQL_USER=root
-MYSQL_PASSWORD=sua_senha
-MYSQL_DB=todolist
-```
 
 > Não versione o `.env`. Confirme que ele está no `.gitignore`.
 
