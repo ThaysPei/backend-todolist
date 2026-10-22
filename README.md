@@ -148,6 +148,8 @@ Se a tabela estiver vazia, a resposta é `[]`.
 
 > O campo `created_at` vem em UTC (o `Z` no final). Converta para o fuso local ao exibir no front-end.
 
+> **Decisão de fuso:** a coluna `DATETIME` não guarda fuso. O pool em `connection.js` usa `timezone: 'Z'`, então o driver grava e lê sempre em UTC, em qualquer máquina. O pool também limita as conexões abertas (`connectionLimit: 10`) e a fila de espera (`queueLimit: 100`).
+
 ## Status do projeto
 
 - [x] Conexão com o MySQL em Docker
