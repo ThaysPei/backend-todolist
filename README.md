@@ -123,7 +123,16 @@ O terminal deve mostrar `server running on port 3333`.
 
 ### `GET /tasks`
 
-Retorna todas as tarefas cadastradas.
+Retorna as tarefas, da mais recente para a mais antiga (`created_at DESC, id DESC`), com paginação.
+
+**Parâmetros de query (opcionais)**
+
+| Parâmetro | Padrão | Regra |
+|---|---|---|
+| `limit` | `50` | inteiro de 1 a 100 |
+| `offset` | `0` | inteiro maior ou igual a 0 |
+
+Exemplo: `GET /tasks?limit=20&offset=40` devolve da 41ª à 60ª tarefa. Valores inválidos retornam `400` com `{ "message": "..." }`.
 
 **Resposta — `200 OK`**
 
@@ -138,7 +147,7 @@ Retorna todas as tarefas cadastradas.
 ]
 ```
 
-Se a tabela estiver vazia, a resposta é `[]`.
+Se a tabela estiver vazia, ou se o `offset` passar do total, a resposta é `[]`.
 
 > O campo `created_at` vem em UTC (o `Z` no final). Converta para o fuso local ao exibir no front-end.
 
