@@ -5,8 +5,17 @@ const DEFAULT_TASK_STATUS = "pendente";
 const toMySqlDatetime = (date = new Date()) =>
   date.toISOString().slice(0, 19).replace("T", " ");
 
-const getAll = async () => {
-  const [tasks] = await connection.execute("SELECT * FROM tasks"); // função de busca GET
+const getAll = async ({ limit, offset }) => {
+  // Colunas explícitas e ordem definida (mais recentes primeiro; id desempata).
+  // Usa query() porque execute() com LIMIT/OFFSET parametrizados falha em
+  // versões recentes do MySQL; limit e offset já chegam validados como inteiros.
+  const [tasks] = await connection.query(
+    `SELECT id, title, status, created_at
+     FROM tasks
+     ORDER BY created_at DESC, id DESC
+     LIMIT ? OFFSET ?`,
+    [limit, offset]
+  ); // função de busca GET
   return tasks;
 };
 

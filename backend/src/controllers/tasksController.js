@@ -1,7 +1,7 @@
 const tasksModel = require("../models/tasksModel");
 
 const getAll = async (request, response) => {
-  const tasks = await tasksModel.getAll();
+  const tasks = await tasksModel.getAll(response.locals.pagination);
   return response.status(200).json(tasks);
 };
 
