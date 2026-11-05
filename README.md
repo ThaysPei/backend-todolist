@@ -160,6 +160,7 @@ Se a tabela estiver vazia, a resposta é `[]`.
 | `[]` na resposta, mas a tabela tem dados | A API está lendo outro banco ou porta | Confira `MYSQL_PORT=3307` e `MYSQL_DB=todolist` no `.env` |
 | `app crashed` no nodemon | Erro de sintaxe ou de importação | Leia a mensagem completa no terminal |
 | Mudou o `.env` e nada mudou | O nodemon não recarrega o `.env` | Pare (`Ctrl+C`) e rode `npm run dev` de novo |
+| `could not connect to the database` ao subir | MySQL parado ou `MYSQL_*` erradas no `.env` | `docker start mysql` e confira o `.env` |
 
 ## Autora
 
