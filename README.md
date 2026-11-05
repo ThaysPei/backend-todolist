@@ -152,6 +152,18 @@ Se a tabela estiver vazia, a resposta é `[]`.
 - [ ] `DELETE /tasks/:id`: remover tarefa
 - [ ] Front-end
 
+## Tratamento de erros
+
+Toda resposta de erro é JSON no formato `{ "message": "..." }`:
+
+| Situação | Status | Mensagem |
+|---|---|---|
+| `title` ausente ou inválido | 400 | descreve o campo |
+| JSON malformado no corpo | 400 | `invalid JSON body` |
+| Falha de banco ou erro inesperado | 500 | `internal server error` (sem detalhes de SQL) |
+
+O erro original é registrado só no log do servidor. Fora de desenvolvimento, rode com `NODE_ENV=production`.
+
 ## Problemas comuns
 
 | Sintoma | Causa provável | Solução |
