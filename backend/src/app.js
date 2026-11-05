@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const router = require("./router");
+const errorHandler = require("./middlewares/errorHandler");
 
 const app = express();
 
@@ -11,5 +12,6 @@ const ALLOWED_ORIGINS = (
 app.use(express.json());
 app.use(cors({ origin: ALLOWED_ORIGINS }));
 app.use(router);
+app.use(errorHandler); // sempre por último
 
 module.exports = app;
